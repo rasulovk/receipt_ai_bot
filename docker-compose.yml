@@ -1,0 +1,33 @@
+
+# docker compose build --no-cache -t py_home_llm_ai_bot:v1 .
+services:
+  python_ai_bot:
+    image: py_home_llm_ai_bot:v1
+    build: .
+    restart: unless-stopped
+    extra_hosts:
+      - "${EXTRA_HOST_DOMAIN_1}:${EXTRA_HOST_IP_1}"
+      - "${EXTRA_HOST_DOMAIN_2}:${EXTRA_HOST_IP_2}"
+      - "${EXTRA_HOST_DOMAIN_3}:${EXTRA_HOST_IP_3}"  # Add Qdrant domain
+    dns:
+      - 10.9.10.10  # Custom DNS server
+    cap_drop:
+      - ALL  # Drop all capabilities
+    security_opt:
+      - no-new-privileges:true  # Prevent privilege escalation
+    read_only: true  # Make filesystem read-only
+    tmpfs:
+      - /tmp  # Create a writable temp directory in memory
+    volumes:
+      - ./:/home/appuser:ro  # Persistent storage
+    environment:
+      - PYTHONUNBUFFERED=1  # Prevent output buffering
+    user: "0:1002"  # Drop root privileges (replace with actual UID/GID)
+    networks:
+      - telegram_default
+    # Uncomment the following lines if you want to expose ports
+
+
+networks:
+  telegram_default:
+    driver: bridge

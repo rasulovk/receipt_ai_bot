@@ -1,0 +1,35 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.pycache
+
+# Ignore test files
+test_*
+qdrant_*
+
+
+# Ignore shell scripts
+update_*.*
+
+
+# Ignore environment files
+.env
+
+# Ignore virtual environments
+venv/
+.env/
+.venv/
+
+# Ignore Docker artifacts
+*.log
+docker-compose.override.yml
+
+# Ignore VSCode settings (optional)
+.vscode/
+# Ignore Qdrant vector database
+qdrant_data/

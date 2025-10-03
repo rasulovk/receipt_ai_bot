@@ -1,0 +1,7 @@
+# manually:
+git checkout main
+git add .
+git commit -m "Private: Your changes"
+git tag -a v2.1 -m "Version 2.1"
+git push origin main
+git push origin v2.1

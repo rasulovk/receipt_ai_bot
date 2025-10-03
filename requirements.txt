@@ -1,0 +1,5 @@
+aiogram
+python-dotenv
+ollama
+requests
+mem0ai
